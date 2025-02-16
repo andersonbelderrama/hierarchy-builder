@@ -14,10 +14,12 @@ return new class extends Migration
             Schema::create('dynamic_data', function (Blueprint $table) {
                   $table->id();
                   $table->foreignIdFor(\App\Models\DynamicStructure::class)->constrained()->cascadeOnDelete();
-                  $table->string('code');
+                  $table->string('code')->unique();
                   $table->json('data');
                   $table->softDeletes();
                   $table->timestamps();
+
+                  $table->unique(['dynamic_structure_id', 'code']);
             });
       }
 
