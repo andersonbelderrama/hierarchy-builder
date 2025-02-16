@@ -14,7 +14,7 @@ return new class extends Migration
             Schema::create('counters', function (Blueprint $table) {
                   $table->id();
                   $table->foreignIdFor(\App\Models\DynamicStructure::class)->constrained()->cascadeOnDelete();
-                  $table->string('last_number');
+                  $table->integer('last_number')->default(0);
                   $table->timestamps();
             });
       }

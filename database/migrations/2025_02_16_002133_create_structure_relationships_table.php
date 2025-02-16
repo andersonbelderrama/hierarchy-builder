@@ -17,6 +17,8 @@ return new class extends Migration
                   $table->foreignId('child_structure_id')->constrained('dynamic_structures')->cascadeOnDelete();
                   $table->string('relationship_type')->comment('one_to_one, one_to_many, many_to_many', 'belongs_to', 'has_many');
                   $table->timestamps();
+
+                  $table->unique(['parent_structure_id', 'child_structure_id']);
             });
       }
 
